@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import ExpensesFilter from "../ExpenseFilter/ExpensesFilter";
@@ -5,13 +6,15 @@ import './Expenses.css';
 
 const Expenses = (props) => {
   const { expenses } = props;
+  const [selectedFilter, setSelectedFilter] = useState('2020');
   const selectedExpenseFilter = (selectedData) => {
-    console.log('Selected Filter: ', selectedData);
+    setSelectedFilter(selectedData)
+    console.log(selectedFilter);
   }
   return (
     <div>
       <Card className="expenses">
-        <ExpensesFilter onSelectExpensesFilter={selectedExpenseFilter} />
+        <ExpensesFilter selectedYear={selectedFilter} onSelectExpensesFilter={selectedExpenseFilter} />
         {expenses.map((expense, index) => {
           return (
             <ExpenseItem

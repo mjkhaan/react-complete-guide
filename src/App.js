@@ -1,31 +1,53 @@
-import Expenses from './components/Expenses';
 import './App.css';
+import Expenses from './components/Expenses/Expenses';
+import NewExpense from './components/NewExpense/NewExpense';
 
-function App() {
+const App = () => {
   const expenses = [
     {
       id: 'e1',
-      title: 'Toilet Paper',
-      amount: 94.12,
-      date: new Date(2020, 7, 14),
+      name: 'Toilet Paper',
+      date: new Date('2022, 1, 10'),
+      amount: 46,
+      currency: '$'
     },
-    { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
+    {
+      id: 'e2',
+      name: 'Car Insurance',
+      date: new Date('2022, 2, 15'),
+      amount: 59,
+      currency: '$'
+    },
     {
       id: 'e3',
-      title: 'Car Insurance',
-      amount: 294.67,
-      date: new Date(2021, 2, 28),
+      name: 'New Desk (Wooden)',
+      date: new Date('2022, 3, 18'),
+      amount: 168,
+      currency: '$'
     },
     {
       id: 'e4',
-      title: 'New Desk (Wooden)',
-      amount: 450,
-      date: new Date(2021, 5, 12),
-    },
+      name: 'Car service',
+      date: new Date('2022, 4, 07'),
+      amount: 86,
+      currency: '$'
+    }
   ];
+
+  const addExpenseHandler = (expense) => {
+    expenses.push({
+      ...expense,
+      currency: '$'
+    });
+    console.log('An Expense: ', expense)
+    console.log(expenses);
+  }
+  console.log(expenses);
   return (
     <div className="App">
-      <Expenses expenses={expenses} />
+      <h1>React complete guide</h1>
+      <NewExpense expenseData={addExpenseHandler} />
+      <Expenses expenses={expenses}></Expenses>
     </div>
   );
 }
